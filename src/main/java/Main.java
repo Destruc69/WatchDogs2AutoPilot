@@ -1,34 +1,36 @@
-import utils.TimerUtils;
-
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Main extends KeyAdapter {
 
-    public static void main(String args[]) throws AWTException {
-        double centerX = 928;
-        double centerY = 545;
+    public static void main(String args[]) throws AWTException, IOException, InterruptedException {
+        int x = 0;
+        while (x != 1) {
+            double centerX = 928;
+            double centerY = 545;
 
-        Robot robot = new Robot();
+            Robot robot = new Robot();
 
-        if (isCenterArrow()) {
-            robot.keyPress('w');
-            robot.keyRelease('s');
-        } else {
-            robot.keyRelease('w');
-            robot.keyPress('s');
-        }
+            if (isCenterArrow()) {
+                robot.keyPress('w');
+                robot.keyRelease('s');
+            } else {
+                robot.keyRelease('w');
+                robot.keyPress('s');
+            }
 
-        if (arrowX() > centerX && arrowY() > centerY) {
-            robot.keyPress('d');
-        } else {
-            robot.keyRelease('d');
-        }
-        if (arrowX() < centerX && arrowY() < centerY) {
-            robot.keyPress('a');
-        } else {
-            robot.keyRelease('a');
+            if (arrowX() > centerX && arrowY() > centerY) {
+                robot.keyPress('d');
+            } else {
+                robot.keyRelease('d');
+            }
+            if (arrowX() < centerX && arrowY() < centerY) {
+                robot.keyPress('a');
+            } else {
+                robot.keyRelease('a');
+            }
         }
     }
 
